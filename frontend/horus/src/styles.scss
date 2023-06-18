@@ -1,0 +1,99 @@
+// Required
+@import "../node_modules/bootstrap/scss/functions";
+
+// Custom colors
+$primary: #5CD1D1;
+$primary-1: #072222;
+$primary-2: #0D3636;
+$primary-3: #185656;
+$primary-4: #277777;
+$primary-5: #378D8D;
+$primary-6: #4EA0A0;
+$primary-7: #5CBCBC;
+
+$secondary: #E747A7;
+$secondary-1: #461633;
+$secondary-2: #65214B;
+$secondary-3: #8B346A;
+$secondary-4: #A03D7A;
+$secondary-5: #A94884;
+$secondary-6: #CA569D;
+$secondary-7: #DB51A6;
+
+$tertiary: #A362E0;
+$tertiary-1: #2A143F;
+$tertiary-2: #3B2054;
+$tertiary-3: #4B2D67;
+$tertiary-4: #5A3978;
+$tertiary-5: #664386;
+$tertiary-6: #754F99;
+$tertiary-7: #8B5BB8;
+
+$dark: #2A2B2E;
+$light: #E2E2E2;
+$header: #151515;
+
+$gray-1: #313131;
+$gray-2: #414141;
+$gray-3: #565656;
+$gray-4: #7A7A7A;
+$gray-5: #929292;
+$gray-6: #A7A7A7;
+$gray-7: #C3C3C3;
+
+$success: #438320;
+$warning: #F7CA41;
+$danger: #BA1C39;
+$info: #409D95;
+
+
+// Default variable overrides
+$body-bg: $dark;
+$body-color: $dark;
+
+$theme-colors: (
+  "primary": $primary,
+  "primary-1": $primary-1,
+  "primary-2": $primary-2,
+  "primary-3": $primary-3,
+  "primary-4": $primary-4,
+  "primary-5": $primary-5,
+  "primary-6": $primary-6,
+  "primary-7": $primary-7,
+  "secondary": $secondary,
+  "secondary-1": $secondary-1,
+  "secondary-2": $secondary-2,
+  "secondary-3": $secondary-3,
+  "secondary-4": $secondary-4,
+  "secondary-5": $secondary-5,
+  "secondary-6": $secondary-6,
+  "secondary-7": $secondary-7,
+  "tertiary": $tertiary,
+  "tertiary-1": $tertiary-1,
+  "tertiary-2": $tertiary-2,
+  "tertiary-3": $tertiary-3,
+  "tertiary-4": $tertiary-4,
+  "tertiary-5": $tertiary-5,
+  "tertiary-6": $tertiary-6,
+  "tertiary-7": $tertiary-7,
+  "light": $light,
+  "dark": $dark,
+  "text": $light,
+  "header": $header,
+  "gray-1": $gray-1,
+  "gray-2": $gray-2,
+  "gray-3": $gray-3,
+  "gray-4": $gray-4,
+  "gray-5": $gray-5,
+  "gray-6": $gray-6,
+  "gray-7": $gray-7,
+  "success": $success,
+  "warning": $warning,
+  "danger": $danger,
+  "info": $info
+) !default;
+
+
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "ngx-toastr/toastr-bs5-alert";

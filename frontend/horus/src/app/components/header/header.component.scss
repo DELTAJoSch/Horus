@@ -1,0 +1,47 @@
+$header-height: 80px;
+$mobile-menu-width: 10rem;
+$header-color: #151515;
+
+.header-bar {
+    height: $header-height;
+    background-color: $header-color;
+}
+
+.header-content {
+    max-height: $header-height;
+    min-height: $header-height;
+    vertical-align: middle;
+    align-content: center;
+}
+
+.header-logo {
+    height: 60px;
+    width: auto;
+}
+
+.header-logo-mobile {
+    height: 40px;
+    width: auto;
+}
+
+.mobile-menu-btn {
+    background-color: #31313155;
+}
+
+.mobile-menu-float {
+    background-color: $header-color;
+    display: block;
+    position: absolute;
+    z-index: 100;
+    width: $mobile-menu-width;
+    border-bottom-right-radius: 1rem;
+}
+
+.search-bar {
+    background-color: #313131;
+    color: #E2E2E2;
+    border: 2px solid #313131;
+    border-radius: 0.8rem;
+    font-size: large;
+    height: calc($header-height * 0.45);
+}
