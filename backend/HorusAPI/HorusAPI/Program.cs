@@ -15,14 +15,14 @@ namespace HorusAPI
     {
         public static void Main(string[] args)
         {
+            var allowOriginsPolicy = "_allowOrigins";
+
             var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
             logger.Info("Building application...");
 
             var builder = WebApplication.CreateBuilder(args);
             builder.Logging.ClearProviders();
             builder.Host.UseNLog();
-
-            // Add services to the container.
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -33,6 +33,18 @@ namespace HorusAPI
             });
 
             builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("MongoDb"));
+
+            builder.Services.AddCors(opt =>
+            {
+                opt.AddPolicy(name: allowOriginsPolicy,
+                    policy =>
+                    {
+                        policy.AllowAnyHeader();
+                        policy.AllowAnyMethod();
+                        policy.AllowCredentials();
+                        policy.SetIsOriginAllowed(hostName => true);
+                    });
+            });
 
             AddSingletons(builder.Services);
 
@@ -45,6 +57,9 @@ namespace HorusAPI
                         return Task.CompletedTask;
                     };
                     options.Cookie.Name = "session-identifier";
+                    options.Cookie.HttpOnly= true;
+                    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                    options.Cookie.IsEssential = true;
                 });
 
             builder.Services.AddHttpContextAccessor();
@@ -65,9 +80,11 @@ namespace HorusAPI
 
             app.UseHttpsRedirection();
 
+            // Remove for production!
+            app.UseCors(allowOriginsPolicy);
+
             app.UseAuthentication();
             app.UseAuthorization();
-
 
             app.MapControllers();
 

@@ -1,0 +1,45 @@
+<div class="row mt-3">
+    <div class="col text-center text-light">
+        {{motd}}
+    </div>
+</div>
+<div class="row mt-5 login-container mx-auto">
+    <div class="col text-center">
+        <div class="row text-light text-start">
+            <div class="col bg-gray-2">
+                <h4 class="p-2">LOGIN</h4>
+            </div>
+        </div>
+        <div class="row text-light">
+            <div class="col bg-gray-1">
+                <div class="row">
+                    <div class="col">
+                        <img class="logo" *ngIf="glasses" src="assets/logo_glasses.png" alt="">
+                        <img class="logo" *ngIf="!glasses" src="assets/logo.png" alt="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+                            <div class="row">
+                                <div class="col">
+                                    <input class="form-control text-light my-2 mx-auto login-field" type="text" placeholder="USERNAME" formControlName="username" id="username" required="true">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <input class="form-control text-light my-2 mx-auto login-field" type="password" placeholder="PASSWORD" formControlName="password" id="password" required="true">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-primary my-2 mb-4" [disabled]="!loginForm.valid"><span class="mx-5">LOGIN</span></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

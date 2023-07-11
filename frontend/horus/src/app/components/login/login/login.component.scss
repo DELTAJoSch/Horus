@@ -1,0 +1,30 @@
+.login-container {
+    width: 30%;
+    justify-self: center;
+}
+
+.logo {
+    max-width: 10rem;
+    min-width: 5rem;
+    height: auto;
+}
+
+.login-field {
+    width: 60%;
+}
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--light);
+    opacity: 1; /* Firefox */
+}
+
+@media only screen and (max-width: 1000px) {
+    .login-container {
+        width: 80%;
+        justify-self: center;
+    }
+
+    .login-field {
+        width: 90%;
+    }
+ }

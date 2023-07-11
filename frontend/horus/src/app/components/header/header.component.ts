@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, HostListener, OnInit } from '@angular/core';
+import * as globals from 'src/app/globals';
 
 @Component({
   selector: 'app-header',
@@ -58,5 +59,13 @@ export class HeaderComponent implements OnInit {
    */
   mobileMenuToggle(){
     this.mobileMenu = !this.mobileMenu;
+  }
+
+  /**
+   * Returns the log in status of the user
+   * @returns True if logged in
+   */
+  loggedIn() {
+    return globals.loggedIn;
   }
 }

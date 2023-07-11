@@ -41,7 +41,7 @@ namespace HorusAPI.Controllers
         /// <param name="name">name to search for</param>
         /// <param name="role">role to search for</param>
         /// <returns>Returns a list of user dtos</returns>
-        [HttpGet]
+        [HttpGet("users")]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Get([FromQuery] int page = 0, [FromQuery] int size = 25, [FromQuery] string? name = null, [FromQuery] string? email = null, [FromQuery] Role? role = null)
@@ -63,7 +63,7 @@ namespace HorusAPI.Controllers
         /// </summary>
         /// <param name="username">the user to get</param>
         /// <returns>Returns the user</returns>
-        [HttpGet("{username}")]
+        [HttpGet("users/{username}")]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -81,10 +81,37 @@ namespace HorusAPI.Controllers
         }
 
         /// <summary>
+        /// Returns the currently logged in account or a 401 Unauthorized if not logged in
+        /// </summary>
+        /// <returns>Returns the currently logged in account</returns>
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetLoggedInAccount()
+        {
+            try
+            {
+                var identity = HttpContext.User.Identity;
+                if (identity == null || identity.Name == null)
+                {
+                    return Unauthorized("User not logged in!");
+                }
+
+                var user = await userService.Get(identity.Name);
+                return Ok(user);
+            }
+            catch (NotFoundException e)
+            {
+                return NotFound("The user does not exist any more");
+            }
+        }
+
+        /// <summary>
         /// Login to the service
         /// </summary>
         /// <returns>Returns Ok if successful, otherwise an error is returned</returns>
-        [HttpPost("login")]
+        [HttpPost("session")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -142,7 +169,7 @@ namespace HorusAPI.Controllers
         /// Logout from the current session
         /// </summary>
         /// <returns>Returns 200 OK</returns>
-        [HttpGet("logout")]
+        [HttpGet("session")]
         public async Task Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
@@ -152,7 +179,7 @@ namespace HorusAPI.Controllers
         /// create a new user
         /// </summary>
         /// <param name="user">the user data</param>
-        [HttpPost]
+        [HttpPost("users")]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -185,7 +212,7 @@ namespace HorusAPI.Controllers
         /// </summary>
         /// <param name="username">the user to update</param>
         /// <param name="user">the new user data</param>
-        [HttpPatch("{username}")]
+        [HttpPatch("users/{username}")]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -222,7 +249,7 @@ namespace HorusAPI.Controllers
         /// Delete the specified user
         /// </summary>
         /// <param name="username">the user to delete's id</param>
-        [HttpDelete("{username}")]
+        [HttpDelete("users/{username}")]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

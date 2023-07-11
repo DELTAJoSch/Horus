@@ -93,6 +93,47 @@ $theme-colors: (
   "info": $info
 ) !default;
 
+:root {
+  --primary: $primary;
+  --primary-1: $primary-1;
+  --primary-2: $primary-2;
+  --primary-3: $primary-3;
+  --primary-4: $primary-4;
+  --primary-5: $primary-5;
+  --primary-6: $primary-6;
+  --primary-7: $primary-7;
+  --secondary: $secondary;
+  --secondary-1: $secondary-1;
+  --secondary-2: $secondary-2;
+  --secondary-3: $secondary-3;
+  --secondary-4: $secondary-4;
+  --secondary-5: $secondary-5;
+  --secondary-6: $secondary-6;
+  --secondary-7: $secondary-7;
+  --tertiary: $tertiary;
+  --tertiary-1: $tertiary-1;
+  --tertiary-2: $tertiary-2;
+  --tertiary-3: $tertiary-3;
+  --tertiary-4: $tertiary-4;
+  --tertiary-5: $tertiary-5;
+  --tertiary-6: $tertiary-6;
+  --tertiary-7: $tertiary-7;
+  --light: $light;
+  --dark: $dark;
+  --text: $light;
+  --header: $header;
+  --gray-1: $gray-1;
+  --gray-2: $gray-2;
+  --gray-3: $gray-3;
+  --gray-4: $gray-4;
+  --gray-5: $gray-5;
+  --gray-6: $gray-6;
+  --gray-7: $gray-7;
+  --success: $success;
+  --warning: $warning;
+  --danger: $danger;
+  --info: $info;
+}
 
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import "node_modules/bootstrap/scss/bootstrap";

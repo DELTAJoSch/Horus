@@ -8,13 +8,13 @@
                         <img src="/assets/logo.png" alt="logo" class="header-logo ms-2"/>
                     </div>
                     <div class="col my-auto text-center">
-                        <a class="text-light text-decoration-none"><h3>OVERVIEW</h3></a>
+                        <a class="text-light text-decoration-none" *ngIf="loggedIn()"><h3>OVERVIEW</h3></a>
                     </div>
                     <div class="col my-auto text-center">
-                        <a class="text-light text-decoration-none"><h3>CREATE</h3></a>
+                        <a class="text-light text-decoration-none" *ngIf="loggedIn()"><h3>CREATE</h3></a>
                     </div>
                     <div class="col my-auto text-center">
-                        <a class="text-light text-decoration-none"><h3>SERVICES</h3></a>
+                        <a class="text-light text-decoration-none" *ngIf="loggedIn()"><h3>SERVICES</h3></a>
                     </div>
                     <div class="col">
                     </div>
@@ -31,10 +31,10 @@
                     <div class="col">
                     </div>
                     <div class="col my-auto text-center">
-                        <input type="text" placeholder="SEARCH..." class="search-bar"/>
+                        <input type="text" placeholder="SEARCH..." class="search-bar" *ngIf="loggedIn()"/>
                     </div>
                     <div class="col my-auto text-center me-2">
-                        <a class="text-light text-decoration-none"><h3>ACC</h3></a>
+                        <a class="text-light text-decoration-none" *ngIf="loggedIn()"><h3>ACC</h3></a>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                         </button>
                     </div>
                     <div class="col my-auto text-center me-1">
-                        <input type="text" placeholder="SEARCH..." class="search-bar"/>
+                        <input type="text" placeholder="SEARCH..." class="search-bar" *ngIf="loggedIn()"/>
                     </div>
                 </div>
             </div>
@@ -63,22 +63,22 @@
 
 <!-- Mobile menu floater -->
 <div class="mobile-menu-float" *ngIf="mobileMenu" [@visibleHidden]="'visible'">
-    <div class="row ms-2">
+    <div class="row ms-2" *ngIf="loggedIn()">
         <div class="col">
             <a class="text-light text-decoration-none"><h4>OVERVIEW</h4></a>
         </div>
     </div>
-    <div class="row ms-2">
+    <div class="row ms-2" *ngIf="loggedIn()">
         <div class="col">
             <a class="text-light text-decoration-none"><h4>CREATE</h4></a>
         </div>
     </div>
-    <div class="row ms-2">
+    <div class="row ms-2" *ngIf="loggedIn()">
         <div class="col">
             <a class="text-light text-decoration-none"><h4>SERVICES</h4></a>
         </div>
     </div>
-    <div class="row ms-2">
+    <div class="row ms-2" *ngIf="loggedIn()">
         <div class="col">
             <a class="text-light text-decoration-none"><h4>ACC</h4></a>
         </div>
